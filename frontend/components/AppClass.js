@@ -1,6 +1,25 @@
 import React from 'react'
+// import axios form 'axios';
+
+const url = 'http://localhost:9000/api/result';
+
 
 export default class AppClass extends React.Component {
+  
+  state = {
+
+    email:'',
+    message:'',
+    x: 2,
+    y: 2,
+    matrix:[
+    [0, 0, 0], 
+    [0, 1, 0], 
+    [0, 0, 0]],
+    steps: 0,
+      
+  };
+  
   render() {
     const { className } = this.props
     return (
