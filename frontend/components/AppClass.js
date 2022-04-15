@@ -38,6 +38,64 @@ export default class AppClass extends React.Component {
       })      
     }    
   }
+
+  right  = () => {
+    if(this.state.x === 3){
+      this.setState({ ...this.state, message:`You can't go right`})
+    }
+    else
+    {
+      const newMatrix= [...this.state.matrix]
+      newMatrix[this.state.y - 1][this.state.x -1 ] = 0
+      newMatrix[this.state.y - 1][this.state.x] = 1
+      this.setState({
+        ...this.state,
+        steps: this.state.steps + 1, 
+        x: this.state.x + 1, 
+        matrix:[...newMatrix],
+        message:'',  
+      })      
+    }    
+  }
+  up  = () => {
+    if(this.state.y === 1){
+      this.setState({ ...this.state, message:`You can't go up`})
+    }
+    else
+    {
+      const newMatrix= [...this.state.matrix]
+      newMatrix[this.state.y - 1][this.state.x -1 ] = 0
+      newMatrix[this.state.y - 2][this.state.x - 1] = 1
+      this.setState({
+        ...this.state,
+        steps: this.state.steps + 1, 
+        x: this.state.y - 1, 
+        matrix:[...newMatrix],
+        message:'',  
+      })      
+    }    
+  }
+
+  down  = () => {
+    if(this.state.y === 3){
+      this.setState({ ...this.state, message:`You can't go down`})
+    }
+    else
+    {
+      const newMatrix= [...this.state.matrix]
+      newMatrix[this.state.y - 1][this.state.x -1 ] = 0
+      newMatrix[this.state.y][this.state.x - 1] = 1
+      this.setState({
+        ...this.state,
+        steps: this.state.steps + 1, 
+        x: this.state.y + 1, 
+        matrix:[...newMatrix],
+        message:'',  
+      })      
+    }    
+  }
+
+  
  
  
   render() {
@@ -69,9 +127,9 @@ export default class AppClass extends React.Component {
         </div>
         <div id="keypad">
           <button id="left" onClick={this.left}>LEFT</button>
-          <button id="up">UP</button>
-          <button id="right">RIGHT</button>
-          <button id="down">DOWN</button>
+          <button id="up" onClick={this.up}>UP</button>
+          <button id="right" onClick={this.right}>RIGHT</button>
+          <button id="down" onClick={this.down}>DOWN</button>
           <button id="reset">reset</button>
         </div>
         <form>
