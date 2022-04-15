@@ -21,7 +21,10 @@ export default class AppClass extends React.Component {
   };
   
   render() {
-    const { className } = this.props
+    
+    const { x, y, matrix, steps, message, email } = this.state;
+    const { className } = this.props;
+    
     return (
       <div id="wrapper" className={className}>
         <div className="info">
@@ -29,21 +32,22 @@ export default class AppClass extends React.Component {
           <h3 id="steps">You moved 0 times</h3>
         </div>
         <div id="grid">
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square active">B</div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
+        {matrix
+            .flatMap((x) => x)
+            .map((spot, idx) => {
+                return (
+                        <div key={idx} 
+                        className={`square${spot  ? ' active' :'' }`}>
+                        {spot ? 'B' : ''}
+                        </div>
+                        );
+                        })}
         </div>
         <div className="info">
           <h3 id="message"></h3>
         </div>
         <div id="keypad">
-          <button id="left">LEFT</button>
+          <button id="left" onClick={this.left}>LEFT</button>
           <button id="up">UP</button>
           <button id="right">RIGHT</button>
           <button id="down">DOWN</button>
