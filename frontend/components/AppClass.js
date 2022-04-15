@@ -19,11 +19,32 @@ export default class AppClass extends React.Component {
     steps: 0,
       
   };
-  
+
+  left  = () => {
+    if(this.state.x === 1){
+      this.setState({ ...this.state, message:`You can't go left`})
+    }
+    else
+    {
+      const newMatrix= [...this.state.matrix]
+      newMatrix[this.state.y - 1][this.state.x -1 ] = 0
+      newMatrix[this.state.y - 1][this.state.x - 2] = 1
+      this.setState({
+        ...this.state,
+        steps: this.state.steps + 1, 
+        x: this.state.x - 1, 
+        matrix:[...newMatrix],
+        message:'',  
+      })      
+    }    
+  }
+ 
+ 
   render() {
-    
+
     const { x, y, matrix, steps, message, email } = this.state;
     const { className } = this.props;
+
     
     return (
       <div id="wrapper" className={className}>
