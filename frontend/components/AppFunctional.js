@@ -1,6 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
+
+const URL = `http://localhost:9000/api/result`;
+
 
 export default function AppFunctional(props) {
+  const [state, setState] = useState({
+    email:'',
+    message:'',
+    x: 2,
+    y: 2,
+    matrix:[
+    [0, 0, 0], 
+    [0, 1, 0], 
+    [0, 0, 0]],
+    steps: 0,
+});
+
+
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
