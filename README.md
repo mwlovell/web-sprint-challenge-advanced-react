@@ -31,6 +31,7 @@ Study its functionality and also inspect the Console, the Network tab and the El
 - Visit your widget by navigating Chrome to `http://localhost:3000`.
 - Run tests locally executing `npm test`. The test files are `codegrade_mvp.test.js` and `App.test.js`.
 
+
 ## API
 
 - The application includes an endpoint reachable at `POST http://localhost:9000/api/result`.
