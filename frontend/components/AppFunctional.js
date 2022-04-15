@@ -16,6 +16,26 @@ export default function AppFunctional(props) {
     steps: 0,
 });
 
+const left  = () => {
+  if(state.x === 1){
+    setState({ ...state, message:`You can't go left`})
+  }
+  else
+  {
+    const newMatrix= [...state.matrix]
+    newMatrix[state.y - 1][state.x -1 ] = 0
+    newMatrix[state.y - 1][state.x - 2] = 1
+    setState({
+      ...state,
+      steps: state.steps + 1, 
+      x: state.x - 1, 
+      matrix:[...newMatrix],
+      message:'',  
+    })      
+  }    
+}
+
+
 
   return (
     <div id="wrapper" className={props.className}>
@@ -38,7 +58,7 @@ export default function AppFunctional(props) {
         <h3 id="message"></h3>
       </div>
       <div id="keypad">
-        <button id="left">LEFT</button>
+        <button onClick={left} id="left">LEFT</button>
         <button id="up">UP</button>
         <button id="right">RIGHT</button>
         <button id="down">DOWN</button>
