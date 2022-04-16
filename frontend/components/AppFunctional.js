@@ -35,6 +35,25 @@ const left  = () => {
   }    
 }
 
+const right  = () => {
+  if(state.x === 3){
+    setState({ ...state, message:`You can't go right`})
+  }
+  else
+  {
+    const newMatrix= [...state.matrix]
+    newMatrix[state.y - 1][state.x -1 ] = 0
+    newMatrix[state.y - 1][state.x] = 1
+    setState({
+      ...state,
+      steps: state.steps + 1, 
+      x: state.x + 1, 
+      matrix:[...newMatrix],
+      message:'',  
+    })      
+  }    
+}
+
 
 
   return (
@@ -59,10 +78,10 @@ const left  = () => {
       </div>
       <div id="keypad">
         <button onClick={left} id="left">LEFT</button>
-        <button id="up">UP</button>
-        <button id="right">RIGHT</button>
-        <button id="down">DOWN</button>
-        <button id="reset">reset</button>
+        {/* <button onClick={up} id="up">UP</button> */}
+        <button onClick={right} id="right">RIGHT</button>
+        {/* <button onClick={down} id="down">DOWN</button>
+        <button onClick={reset}id="reset">reset</button> */}
       </div>
       <form>
         <input id="email" type="email" placeholder="type email"></input>
