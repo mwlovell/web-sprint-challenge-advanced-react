@@ -97,7 +97,7 @@ const down  = () => {
 const reset  = () => {
   setState({
   
-    email:'',
+    email: '',
     message:'',
     x: 2,
     y: 2,
@@ -117,12 +117,10 @@ const changeInput = (evt) => {
 
 const onSubmit = (evt)=>{
   evt.preventDefault()
-  axios.post(
-    url,
-    {...state, email: state.email})
+  axios.post(url,{...state})
   .then(
     (res)=>{setState({
-      ...state, message: res.data.message
+      ...state, message: res.data.message, email: '',
     })}
   ).catch((error)=>
   {setState({
